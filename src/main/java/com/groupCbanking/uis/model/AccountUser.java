@@ -2,13 +2,13 @@ package com.groupCbanking.uis.model;
 
 import java.time.LocalDate;
 
-public class Account {
+public class AccountUser {
 
-    private int accountId;
-    private String accountName;
-    private int accountNumber;
-    private long mobileNo;
-    private String email;
+    int accountId;
+    String accountName;
+    int accountNumber;
+    long mobileNo;
+    String email;
 
 
     public int getAccountId() {

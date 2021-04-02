@@ -1,10 +1,10 @@
 package com.groupCbanking.uis.service;
 
-import com.groupCbanking.uis.model.Account;
+import com.groupCbanking.uis.model.AccountUser;
 
 public interface AccountService {
 
-    int saveAccount (Account account);
-    int updateAccount (Account account);
+    int saveAccount (AccountUser account);
+    int updateAccount (AccountUser account);
     int deleteAccount (int accountId);
 }

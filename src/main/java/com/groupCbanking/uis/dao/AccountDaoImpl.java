@@ -1,17 +1,16 @@
 package com.groupCbanking.uis.dao;
 
-import com.groupCbanking.uis.model.Account;
+import com.groupCbanking.uis.model.AccountUser;
 import com.groupCbanking.uis.util.AccountQueryUtil;
 import com.groupCbanking.uis.util.DbUtil;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class AccountDaoImpl implements AccountDao{
 
     @Override
-    public int saveAccount(Account account) {
+    public int saveAccount(AccountUser account) {
         int status = 0;
         try(
                 PreparedStatement ps = DbUtil.getConnection().prepareStatement(AccountQueryUtil.SAVE_SQL);
@@ -30,7 +29,7 @@ public class AccountDaoImpl implements AccountDao{
     }
 
     @Override
-    public int updateAccount(Account account) {
+    public int updateAccount(AccountUser account) {
         int updated = 0;
         try(
                 PreparedStatement ps = DbUtil.getConnection().prepareStatement(AccountQueryUtil.UPDATE_SQL);
