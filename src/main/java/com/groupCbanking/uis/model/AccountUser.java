@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class AccountUser {
 
-    int accountId;
+   private int accountId;
     String accountName;
     int accountNumber;
     long mobileNo;
@@ -15,8 +15,8 @@ public class AccountUser {
         return accountId;
     }
 
-    public void setAccountId(int id) {
-        this.accountId = id;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     public String getAccountName() {

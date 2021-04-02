@@ -13,40 +13,40 @@ public class UserController {
 
     public static void main(String[] args) {
 
-        AccountService accountService = new AccountServiceImpl() ;
+        AccountService accountService = new AccountServiceImpl();
 
         String decision = "N";
 
         do {
             String operation = JOptionPane.showInputDialog("Enter operation: save | update | delete ");
-            switch (operation){
+            switch (operation) {
 
-                case"save":
+                case "save":
                     AccountUser account = getAccount("save");
                     int saved = accountService.saveAccount(account);
-                    if(saved >= 1){
+                    if (saved >= 1) {
                         JOptionPane.showMessageDialog(null, "Accountinfo is saved in database");
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "Error in database");
                     }
                     break;
 
-                case"update":
+                case "update":
                     AccountUser updatedAccount = getAccount("update");
                     int updated = accountService.updateAccount(updatedAccount);
-                    if(updated >= 1){
+                    if (updated >= 1) {
                         JOptionPane.showMessageDialog(null, "Account info is updated in database");
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "Error in database");
                     }
                     break;
 
-                case"delete":
+                case "delete":
                     int accountId = Integer.parseInt(JOptionPane.showInputDialog("Enter Account Id: "));
                     int deleted = accountService.deleteAccount(accountId);
-                    if(deleted >= 1){
+                    if (deleted >= 1) {
                         JOptionPane.showMessageDialog(null, "Account is deleted from database");
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "Error in database");
                     }
                     break;
@@ -56,27 +56,28 @@ public class UserController {
 
             }
             decision = JOptionPane.showInputDialog("Do you want to continue? Enter Y / N");
-        }while(decision.equalsIgnoreCase("Y"));
-        JOptionPane.showMessageDialog(null,"Thanks for using the service");
+        } while (decision.equalsIgnoreCase("Y"));
+        JOptionPane.showMessageDialog(null, "Thanks for using the service");
 
     }
 
-    public static AccountUser getAccount(String type){
-        AccountUser account= new AccountUser();
-        if (type.equals("update")){
-            int id = Integer.parseInt(JOptionPane.showInputDialog("Enter Account Id: "));
-           account.setAccountId(id);
+    public static AccountUser getAccount(String type) {
+        AccountUser account = new AccountUser();
+        if (type.equals("update")) {
+            int accountId = Integer.parseInt(JOptionPane.showInputDialog("Enter Account Id: "));
+            account.setAccountId(accountId);
         }
-        String AccountName = JOptionPane.showInputDialog("Enter Account Name: ");
-        int AccountNumber = Integer.parseInt(JOptionPane.showInputDialog("Enter Account Number: "));
-        String Email = JOptionPane.showInputDialog("Enter Account Email: ");
+        String accountName = JOptionPane.showInputDialog("Enter Account Name: ");
+        String email = JOptionPane.showInputDialog("Enter Account Email: ");
+        int accountNumber = Integer.parseInt(JOptionPane.showInputDialog("Enter Account Number: "));
         long mobileNo = Long.parseLong(JOptionPane.showInputDialog("Enter mobile no.: "));
 
-        account.setAccountName(account.getAccountName());
-        account.setAccountNumber(account.getAccountNumber());
-        account.setAccountId(account.getAccountId());
-        account.setEmail(account.getEmail());
-        account.setMobileNo(account.getMobileNo());
+        account.setAccountName(accountName);
+        account.setAccountNumber(accountNumber);
+        account.setEmail(email);
+        account.setMobileNo(mobileNo);
+
+
 //        account.setAccountName(accoutName);
 //        account.setEmail(email);
 //        account.setMobileNo(mobileNo);
@@ -86,6 +87,7 @@ public class UserController {
         return account;
 
     }
+}
 //    public static void printAccountInfo(AccountUser account){
 //        System.out.println("+++++++");
 //        System.out.println("Account id is: " + account.getAccountId());
@@ -160,4 +162,4 @@ public class UserController {
 //
 //        }
 
-}
+
