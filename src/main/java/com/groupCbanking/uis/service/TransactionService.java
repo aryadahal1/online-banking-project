@@ -1,4 +1,15 @@
 package com.groupCbanking.uis.service;
 
-public class TransactionService {
+import com.groupCbanking.uis.model.AccountUser;
+
+public interface TransactionService {
+
+     String createAccount(AccountUser account);
+
+     String depositAmount(int accountId);
+
+     String withdrawAmount(int accountId);
+
+     double checkBalance(int accountId);
+
 }

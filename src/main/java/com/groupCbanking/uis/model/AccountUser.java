@@ -4,11 +4,11 @@ import java.time.LocalDate;
 
 public class AccountUser {
 
-   private int accountId;
-    String accountName;
-    int accountNumber;
-    long mobileNo;
-    String email;
+    private int accountId;
+    private String accountName;
+    private int accountNumber;
+    private long mobileNo;
+    private String email;
 
 
     public int getAccountId() {

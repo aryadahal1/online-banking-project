@@ -2,7 +2,7 @@ package com.groupCbanking.uis.model;
 
 import java.time.LocalDate;
 
-public class Transaction {
+public class AccountTransaction {
 
     private double balance;
     private double withdrawnAmount;

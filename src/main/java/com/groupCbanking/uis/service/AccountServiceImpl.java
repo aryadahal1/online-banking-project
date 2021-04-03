@@ -9,7 +9,7 @@ public class AccountServiceImpl implements AccountService{
     AccountDao accountDao = new AccountDaoImpl();
 
     @Override
-    public int saveAccount(AccountUser account) {
+    public int createAccount(AccountUser account) {
         return accountDao.saveAccount(account);
     }
 

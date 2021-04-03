@@ -3,9 +3,6 @@ package com.groupCbanking.uis.controller;
 import com.groupCbanking.uis.service.AccountService;
 import com.groupCbanking.uis.service.AccountServiceImpl;
 import com.groupCbanking.uis.model.AccountUser;
-import com.groupCbanking.uis.model.Transaction;
-import com.groupCbanking.uis.dao.AccountDaoImpl;
-import com.groupCbanking.uis.dao.AccountDao;
 
 import javax.swing.*;
 
@@ -17,35 +14,48 @@ public class UserController {
 
         String decision = "N";
 
+
         do {
-            String operation = JOptionPane.showInputDialog("Enter operation: save | update | delete ");
+            String operation = JOptionPane.showInputDialog("Enter operation: CreateAccount | DepositAmount | WithdrawAmount | CheckBalance  ");
             switch (operation) {
 
-                case "save":
-                    AccountUser account = getAccount("save");
-                    int saved = accountService.saveAccount(account);
-                    if (saved >= 1) {
-                        JOptionPane.showMessageDialog(null, "Accountinfo is saved in database");
+                case "CreateAccount":
+                    AccountUser account = getAccount("CreateAccount");
+                    int ca = accountService.createAccount(account);
+                    if (ca >= 1) {
+                        JOptionPane.showMessageDialog(null, "Account Created");
                     } else {
                         JOptionPane.showMessageDialog(null, "Error in database");
                     }
                     break;
 
-                case "update":
-                    AccountUser updatedAccount = getAccount("update");
-                    int updated = accountService.updateAccount(updatedAccount);
-                    if (updated >= 1) {
-                        JOptionPane.showMessageDialog(null, "Account info is updated in database");
+                case "DepositAmount":
+                    int accountId = Integer.parseInt(JOptionPane.showInputDialog("Enter Amount to Withdraw: ");
+                    AccountUser amountDeposited = getAccount("DepositAmount");
+                    int da = accountService.depositAmount(amountDeposited);
+                    if (da >= 1) {
+                        JOptionPane.showMessageDialog(null, "Amount is deposited");
                     } else {
                         JOptionPane.showMessageDialog(null, "Error in database");
                     }
                     break;
 
-                case "delete":
-                    int accountId = Integer.parseInt(JOptionPane.showInputDialog("Enter Account Id: "));
-                    int deleted = accountService.deleteAccount(accountId);
-                    if (deleted >= 1) {
-                        JOptionPane.showMessageDialog(null, "Account is deleted from database");
+                case "WithdrawAmount":
+                    int accountId2 = Integer.parseInt(JOptionPane.showInputDialog("Enter Amount to Withdraw: "));
+                    int wa = accountService.withdrawAmount(accountId);
+                    if (wa >= 1) {
+                        JOptionPane.showMessageDialog(null, "Amount is withdrawn");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error in database");
+                    }
+                    break;
+
+                case "CheckBalance":
+                    double balance;
+                    int accountId3 = Integer.parseInt(JOptionPane.showInputDialog("Enter Account Id: "));
+                    int cb = accountService.deleteAccount(accountId3);
+                    if (cb >= 1) {
+                        JOptionPane.showMessageDialog(null, "Your Balance is: " + balance);
                     } else {
                         JOptionPane.showMessageDialog(null, "Error in database");
                     }
@@ -63,7 +73,7 @@ public class UserController {
 
     public static AccountUser getAccount(String type) {
         AccountUser account = new AccountUser();
-        if (type.equals("update")) {
+        if (type.equals("CheckBalance")) {
             int accountId = Integer.parseInt(JOptionPane.showInputDialog("Enter Account Id: "));
             account.setAccountId(accountId);
         }
@@ -99,67 +109,6 @@ public class UserController {
 //
 //    }
 //
-//        double balance;
-//        double previousTransaction;
-//        String decision = "N";
-//
-//        public void depositAmount ( double amount){
-//            if (amount != 0) {
-//                balance = balance + amount;
-//                previousTransaction = amount;
-//            }
-//        }
-//
-//        public void withdrawAmount ( double amount){
-//            if (amount != 0) {
-//                balance = balance - amount;
-//                previousTransaction = -amount;
-//            }
-//        }
-//        public void checkPreviousTransaction () {
-//            if (previousTransaction > 0) {
-//                System.out.println("Deposited: " + previousTransaction);
-//                ;
-//            } else if (previousTransaction < 0) {
-//                System.out.println("Withdrawn: " + Math.abs(previousTransaction));
-//            } else {
-//                System.out.println("No transaction");
-//            }
-//
-//            do {
-//                String operation = JOptionPane.showInputDialog("Enter operation: createAccount | depositAmount | withdrawAmount | checkBalance");
-//                switch (operation) {
-//                    case "createAccount":
-//                        break;
-//                    case "depositAmount":
-//                        System.out.println("===============");
-//                        System.out.println("Enter an amount to deposit: ");
-//                        System.out.println("================");
-//                        break;
-//                    case "withdrawAmount":
-//                        System.out.println("===============");
-//                        System.out.println("Enter an amount to withdraw: ");
-//                        System.out.println("===============");
-//                        break;
-//                    case "checkBalance":
-//                        System.out.println("================");
-//                        System.out.println("Your balance is: " + balance);
-//                        System.out.println("================");
-//                        break;
-//                    case "checkPreviousTransaction":
-//                        System.out.println("================");
-//                        System.out.println("================");
-//                        break;
-//                    default:
-//                        JOptionPane.showMessageDialog(null, "Wrong selection");
-//                }
-//                decision = JOptionPane.showInputDialog("Do you want to continue? Enter y|n");
-//
-//            } while (decision.equalsIgnoreCase("y"));
-//
-//            JOptionPane.showMessageDialog(null, "Good Day.");
-//
-//
-//        }
+
 
 
